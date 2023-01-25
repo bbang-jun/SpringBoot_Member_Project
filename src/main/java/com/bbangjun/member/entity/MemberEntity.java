@@ -1,5 +1,6 @@
 package com.bbangjun.member.entity;
 
+import com.bbangjun.member.dto.MemberDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +24,14 @@ public class MemberEntity { // entity class는 일종의 table 역할
 
     @Column
     private String memberName;
+
+    // 1. dto 객체를 entity 객체로 변환 (MemberEntity에서 진행)
+    public static MemberEntity toMemberEntity(MemberDTO memberDTO){
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+
+        return memberEntity;
+    }
 }
