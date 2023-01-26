@@ -9,3 +9,6 @@
 - Build Tool: Gradle
 - Object Relational Mapping: Spring Data JPA
 - View Template Engine: Thymeleaf
+
+## development diary
+https://luciddawn.notion.site/9f3a939f7aaf4320baa5d2fe8f7d343e
