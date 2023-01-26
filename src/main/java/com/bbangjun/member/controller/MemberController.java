@@ -4,11 +4,13 @@ import com.bbangjun.member.dto.MemberDTO;
 import com.bbangjun.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -50,5 +52,15 @@ public class MemberController {
             // login 실패
             return "login";
         }
+    }
+
+    @GetMapping("/member/")
+    public String findAll(Model model){
+        // db에서 저장되어 있는 모든 정보를 가져온다는 개념.
+        // 회원하는 여러 개의 데이터이므로 java util에서 제공하는 List<> 사용
+        // 특정 html로 가져갈 데이터가 있다면 model 객체 사용
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList", memberDTOList);
+        return "list";
     }
 }
