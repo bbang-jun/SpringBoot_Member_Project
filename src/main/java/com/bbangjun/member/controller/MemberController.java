@@ -30,6 +30,11 @@ public class MemberController {
         return "login";
     }
 
+    @GetMapping("/member/login")
+    public String loginForm(){
+        return "login";
+    }
+
     @PostMapping("/member/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
         System.out.println("MemberController.login");
