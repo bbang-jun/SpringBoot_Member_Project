@@ -75,5 +75,16 @@ public class MemberService {
             return null;
         }
     }
+
+    public MemberDTO updateForm(String myEmail) {
+        // 이메일로 db에서 회원 정보를 조회
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberEmail(myEmail);
+        if(optionalMemberEntity.isPresent()){
+            return MemberDTO.toMemberDTO(optionalMemberEntity.get());
+        }
+        else{
+            return null;
+        }
+    }
 }
 
