@@ -6,6 +6,7 @@ import com.bbangjun.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -61,6 +62,18 @@ public class MemberService {
             //memberDTOList.add(memberDTO);
         }
         return memberDTOList;
+    }
+
+    public MemberDTO findById(Long id){
+        // null 값 방지를 위해 entity를 optional 객체로 감싸는 것
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findById(id);
+        if(optionalMemberEntity.isPresent()){
+            // Optional 객체로 감싸였을 때는 get 메서드로 entity 객체를 꺼낼 수 있음
+            return MemberDTO.toMemberDTO(optionalMemberEntity.get());
+        }
+        else{
+            return null;
+        }
     }
 }
 
