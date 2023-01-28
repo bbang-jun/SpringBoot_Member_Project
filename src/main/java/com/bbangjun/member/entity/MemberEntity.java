@@ -34,4 +34,16 @@ public class MemberEntity { // entity class는 일종의 table 역할
 
         return memberEntity;
     }
+
+    public static MemberEntity toUpdateMemberEntity(MemberDTO memberDTO) {
+        MemberEntity memberEntity = new MemberEntity();
+        // controller에서 return "redirect:/member/" + memberDTO.getId();를 구성하기 위해 Id가 필요하므로
+        // setId 또한 추가해야 함
+        memberEntity.setId(memberDTO.getId());
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail());
+        memberEntity.setMemberName(memberDTO.getMemberName());
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword());
+
+        return memberEntity;
+    }
 }

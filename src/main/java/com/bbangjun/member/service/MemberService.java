@@ -86,5 +86,11 @@ public class MemberService {
             return null;
         }
     }
+
+    public void update(MemberDTO memberDTO) {
+        // id를 set하지 않는, 처음 만든 toMemberEntity() 메서드를 사용하게 되면
+        // update가 아닌 insert가 되어버림
+        memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
+    }
 }
 
