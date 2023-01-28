@@ -72,5 +72,16 @@ public class MemberController {
         return "detail";
     }
 
+    @GetMapping("member/update")
+    public String updateForm(HttpSession session, Model model){
+        // getAttribute 메서드는 return type이 Object인데 String에 담으려고 해서 오류 발생
+        // 따라서 String으로 강제 형 변환 진행(캐스팅)
+        String myEmail = (String) session.getAttribute("loginEmail");
+        // 이메일로 조회해서 memberDTO로 가져옴
+        MemberDTO memberDTO = memberService.updateForm(myEmail);
+        // model에 조회한 데이터들을 담아서 update.html로 이동
+        model.addAttribute("updateMember", memberDTO);
+        return "update";
+    }
 
 }
