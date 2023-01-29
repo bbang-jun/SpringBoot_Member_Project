@@ -92,5 +92,9 @@ public class MemberService {
         // update가 아닌 insert가 되어버림
         memberRepository.save(MemberEntity.toUpdateMemberEntity(memberDTO));
     }
+
+    public void deleteById(Long id) {
+        memberRepository.deleteById(id);
+    }
 }
 

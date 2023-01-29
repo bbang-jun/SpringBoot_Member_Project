@@ -90,4 +90,10 @@ public class MemberController {
         return "redirect:/member/" + memberDTO.getId();
     }
 
+    @GetMapping("member/delete/{id}")
+    public String deleteById(@PathVariable Long id){
+        memberService.deleteById(id);
+        // redirect 잊지 말기!
+        return "redirect:/member/";
+    }
 }
